@@ -36,9 +36,12 @@ Two switches live there too:
 
 ## Music
 
-Place the supplied MP3 at `public/audio/until-i-found-you.mp3`. Until the
-file exists the Music control is hidden. Sound only ever starts from the
-guest's own tap on that control.
+The MP3 is at `public/audio/until-i-found-you.mp3`; if it is removed the
+Music control disappears. With `music.autoplay` on (the default) the song
+starts by itself where the browser allows and otherwise at the guest's first
+tap anywhere on the page, since phones refuse sound before a touch. The
+top-right button turns it off and on. Set `autoplay: false` for the older
+behaviour, where nothing plays until the button is pressed.
 
 ## URL switches (for checking)
 

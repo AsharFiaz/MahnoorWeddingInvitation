@@ -92,6 +92,10 @@ export const WEDDING = {
     src: '/audio/until-i-found-you.mp3',
     title: 'Until I Found You',
     artist: 'Stephen Sanchez',
+    /* true: start on its own where the browser allows, otherwise at the
+       guest's first tap anywhere; the button turns it off. false: silent
+       until the guest presses the button. */
+    autoplay: true,
   },
 
   share: {
