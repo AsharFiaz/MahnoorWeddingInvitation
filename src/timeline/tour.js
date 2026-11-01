@@ -72,6 +72,21 @@ export function createTour(api, events, { end = 0 } = {}) {
     api.events.emit('caption', { id: 'summary' });
   }
 
+  /* The guest's Next page: move book time forward to the next turn (or the
+     approach, or the cover) so the remaining hold is skipped and the page
+     turns now, through the same event the autopilot would have fired. A
+     press during a turn is ignored rather than queued. */
+  function skipToNext() {
+    if (finished) return false;
+    if (api.turn.active || api.book.state === 'opening') return false;
+    const now = api.clock.time;
+    const boundary = list.find((e) => e.t > now + 1e-6
+      && (e.do === 'next' || e.do === 'openCover' || (e.do === 'pose' && e.kind === 'closed')));
+    api.clock.time = boundary ? boundary.t : end;
+    api.clock.paused = false;
+    return true;
+  }
+
   /* Back to the very start. */
   function replay() {
     api.clock.time = 0;
@@ -80,5 +95,5 @@ export function createTour(api, events, { end = 0 } = {}) {
     api.clock.paused = false;
   }
 
-  return { list, end, update, reset, finish, replay, get applied() { return applied; }, get finished() { return finished; } };
+  return { list, end, update, reset, finish, replay, skipToNext, get applied() { return applied; }, get finished() { return finished; } };
 }

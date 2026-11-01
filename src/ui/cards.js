@@ -17,16 +17,14 @@ export function arabicBlock(arabic, translation, reference) {
     ${reference ? `<p class="reference">${esc(reference)}</p>` : ''}`;
 }
 
+/* The opening card: Bismillah and the names only. The dates and venues are
+   kept for their own pages, so the invitation unfolds in order. */
 export function renderIntro() {
-  const [m, b] = WEDDING.events;
   return `
   <div class="card card-intro">
     ${arabicBlock(WEDDING.bismillah.arabic, WEDDING.bismillah.translation)}
     <h1 class="names">${esc(coupleNames(' & '))}</h1>
-    <p class="dates">
-      <span><b>${esc(m.name)}</b> ${esc(m.dayLabel)}</span>
-      <span><b>${esc(b.name)}</b> ${esc(b.dayLabel)}</span>
-    </p>
+    <p class="eyebrow eyebrow-after">Wedding Invitation</p>
   </div>`;
 }
 

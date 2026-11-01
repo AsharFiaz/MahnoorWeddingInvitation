@@ -17,8 +17,8 @@ export const COLUMN_H = 2.6;
 export const DAIS_R = 1.78;
 export const DAIS_H = 0.12;
 
-export const GOLD = { color: 0xc9a961, metalness: 0.9, roughness: 0.32 };
-export const IVORY = { color: 0xf3ebdb, metalness: 0, roughness: 0.82 };
+export const GOLD = { color: 0xbd953f, metalness: 0.9, roughness: 0.3 };
+export const IVORY = { color: 0xe6d9bf, metalness: 0, roughness: 0.82 };
 
 function groundTexture(seed) {
   const s = 512;

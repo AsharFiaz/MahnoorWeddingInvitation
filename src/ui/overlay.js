@@ -18,6 +18,7 @@ export function createOverlay(api, root) {
     <div class="topbar">
       <button type="button" class="pill pill-details" data-action="details">Event details</button>
       <div class="topbar-right">
+        <button type="button" class="pill pill-icon" data-action="next" title="Go to the next page now"><span class="label">Next page</span></button>
         <button type="button" class="pill pill-icon" data-action="pause" aria-pressed="false" title="Pause"><span class="label">Pause</span></button>
         <button type="button" class="pill pill-icon" data-action="replay" title="Replay from the start"><span class="label">Replay</span></button>
         <button type="button" class="pill pill-icon pill-music" data-action="music" title="Music"><span class="label">Music</span></button>
@@ -30,6 +31,7 @@ export function createOverlay(api, root) {
   const inner = root.querySelector('.panel-inner');
   const progress = root.querySelector('.progress i');
   const pauseBtn = root.querySelector('[data-action="pause"]');
+  const nextBtn = root.querySelector('[data-action="next"]');
   const detailsBtn = root.querySelector('[data-action="details"]');
   const musicBtn = root.querySelector('[data-action="music"]');
 
@@ -109,6 +111,7 @@ export function createOverlay(api, root) {
     if (!btn) return;
     const action = btn.dataset.action;
     if (action === 'pause') setPaused(!api.clock.paused);
+    if (action === 'next') { setPaused(false); api.tour.skipToNext(); }
     if (action === 'details') { setPaused(false); api.tour.finish(); }
     if (action === 'replay') { api.tour.replay(); setPaused(false); }
   });
@@ -121,6 +124,7 @@ export function createOverlay(api, root) {
     const atSummary = id === 'summary';
     detailsBtn.hidden = atSummary;
     pauseBtn.hidden = atSummary;
+    nextBtn.hidden = atSummary;
   });
 
   function update(time) {

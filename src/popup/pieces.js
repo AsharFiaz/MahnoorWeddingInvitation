@@ -40,7 +40,7 @@ export function material(c, extra = {}) {
   }
   return cache.get(key);
 }
-export const goldMaterial = () => material('#c9a961', { metalness: 0.85, roughness: 0.3, bumpScale: 0.004 });
+export const goldMaterial = () => material('#bd953f', { metalness: 0.85, roughness: 0.3, bumpScale: 0.004 });
 
 export function mesh(g, c, parent, x = 0, y = 0, z = 0) {
   const m = new THREE.Mesh(g, typeof c === 'string' ? material(c) : c);

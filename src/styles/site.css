@@ -64,10 +64,12 @@ button, input, select, textarea { font: inherit; color: inherit; }
 }
 .panel.is-visible { opacity: 1; transform: none; pointer-events: auto; }
 .panel-inner {
+  scrollbar-width: none;
   background: var(--paper); border: 1px solid var(--gold-line); border-radius: 18px;
   box-shadow: 0 10px 40px rgba(80, 60, 20, 0.14); padding: 18px 18px 16px;
   max-height: 100%; overflow-y: auto; overscroll-behavior: contain; -webkit-overflow-scrolling: touch;
 }
+.panel-inner::-webkit-scrollbar { display: none; }
 html[data-layout="portrait"] .panel {
   left: calc(var(--gap) + var(--safe-left)); right: calc(var(--gap) + var(--safe-right));
   bottom: calc(var(--gap) + var(--safe-bottom)); max-height: var(--panel-h);
@@ -84,8 +86,9 @@ html[data-layout="landscape"] .panel[data-card="summary"] { justify-content: fle
 .card { font-size: 16px; line-height: 1.5; }
 .card p { margin: 0 0 10px; }
 .card p:last-child { margin-bottom: 0; }
-.names { font-family: var(--display); font-weight: 500; color: var(--gold-deep); font-size: clamp(30px, 8vw, 44px); line-height: 1.1; margin: 8px 0 6px; letter-spacing: 0.01em; text-align: center; }
+.names { font-family: var(--display); font-weight: 600; color: var(--gold-deep); font-size: clamp(28px, 7vw, 40px); line-height: 1.1; margin: 8px 0 6px; letter-spacing: 0.01em; text-align: center; }
 .names-small { font-size: clamp(26px, 6vw, 34px); margin: 2px 0 8px; }
+.eyebrow-after { margin-top: 6px; }
 .eyebrow { font-size: 12px; letter-spacing: 0.22em; text-transform: uppercase; color: var(--gold-deep); text-align: center; margin: 0 0 4px; font-weight: 600; }
 .arabic { font-family: var(--arabic); font-size: clamp(22px, 5.6vw, 28px); line-height: 1.9; color: var(--ink); text-align: center; margin: 2px 0 6px; unicode-bidi: isolate; }
 .translation { font-family: var(--display); font-style: italic; font-size: clamp(17px, 4.4vw, 20px); line-height: 1.45; text-align: center; color: var(--ink); }
