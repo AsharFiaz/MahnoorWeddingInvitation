@@ -1,0 +1,21 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Mahnoor and Shirza Wedding//Invitation//EN
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+BEGIN:VEVENT
+UID:barat-2026@mahnoor-shirza-wedding
+DTSTAMP:20261101T000000Z
+DTSTART:20261227T140000Z
+DTEND:20261227T170000Z
+SUMMARY:Barat: Mahnoor Fiaz & Shirza Hashmi
+DESCRIPTION:Barat\, Sunday\, 27 December 2026\, 7:00 pm to 10:00 pm (Paki
+ stan time).\nDinner: 9:00 pm.\nRukhsati: 10:00 pm.\nVenue: Zircon Marque
+ e\, Kuri Road\, Islamabad.\nGoogle Maps listing: Plot 1\, Islamabad Expr
+ essway\, near Barqi PSO pump\, Nawaz\, Islamabad.\nDirections: https://m
+ aps.google.com/?cid=2306735650288776135
+LOCATION:Zircon Marquee\, Kuri Road\, Islamabad (Plot 1\, Islamabad Expre
+ ssway\, near Barqi PSO pump\, Nawaz\, Islamabad)
+URL:https://maps.google.com/?cid=2306735650288776135
+END:VEVENT
+END:VCALENDAR

@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Mahnoor & Shirza | Wedding Invitation</title>
+<meta name="description" content="Wedding of Mahnoor Fiaz and Shirza Hashmi. Mehndi: Saturday, 26 December 2026. Barat: Sunday, 27 December 2026. Islamabad.">
+<meta name="theme-color" content="#f3ebdb">
+<meta name="robots" content="noindex">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Mahnoor & Shirza | Wedding Invitation">
+<meta property="og:description" content="Wedding of Mahnoor Fiaz and Shirza Hashmi. Mehndi: Saturday, 26 December 2026. Barat: Sunday, 27 December 2026. Islamabad.">
+<meta property="og:site_name" content="Mahnoor & Shirza | Wedding Invitation">
+<meta property="og:url" content="%SITE_URL%/">
+<meta property="og:image" content="%SITE_URL%/og-image.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Mahnoor & Shirza, Wedding Invitation: Mehndi Saturday 26 December 2026, Barat Sunday 27 December 2026">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Mahnoor & Shirza | Wedding Invitation">
+<meta name="twitter:description" content="Mehndi: Saturday, 26 December 2026. Barat: Sunday, 27 December 2026. Islamabad.">
+<meta name="twitter:image" content="%SITE_URL%/og-image.jpg">
+<style>
+  /* Before the stylesheet arrives: a cream page, never a flash of white. */
+  html, body { margin: 0; background: #f3ebdb; }
+</style>
+</head>
+<body>
+<canvas id="stage" aria-label="A miniature wedding setting with an ivory invitation book that opens and turns its pages by itself. The invitation text is in the panel beside it."></canvas>
+<canvas id="veil" aria-hidden="true"></canvas>
+<div id="ui"></div>
+
+<!-- The whole invitation as plain text and maps, shown when the scene cannot be drawn. -->
+<div id="fallback" hidden></div>
+<noscript>
+  <main class="static noscript">
+    <h1>Mahnoor &amp; Shirza</h1>
+    <p>Mr. &amp; Mrs. Mirza Fiaz Ahmed request the honour of your presence and prayers at the wedding of their beloved daughter Mahnoor Fiaz with Shirza Hashmi</p>
+    <h2>Mehndi</h2>
+    <p>Saturday, 26 December 2026. 7:00 pm to 10:00 pm. Dinner: 9:00 pm.<br>Elegance Marquee, Khanna Pul, Islamabad.<br><a href="https://maps.google.com/?cid=3485907793680232015">Get Directions</a></p>
+    <h2>Barat</h2>
+    <p>Sunday, 27 December 2026. 7:00 pm to 10:00 pm. Dinner: 9:00 pm. Rukhsati: 10:00 pm.<br>Zircon Marquee, Kuri Road, Islamabad.<br><a href="https://maps.google.com/?cid=2306735650288776135">Get Directions</a></p>
+    <p>With love and prayers: Mirza Fiaz Ahmed &amp; Alia Fiaz<br>Awaiting your presence: Ashar Fiaz, Haseeb Fiaz, Talha Fiaz<br>Your presence and prayers mean the world to us</p>
+    <p>Contact: Mirza Fiaz Ahmed <a href="tel:+923009563850">0300 9563850</a> · Ashar Fiaz <a href="tel:+923120874969">0312 0874969</a></p>
+  </main>
+</noscript>
+
+<script type="module">
+  const params = new URLSearchParams(location.search);
+  const canvas = document.getElementById('stage');
+  const veil = document.getElementById('veil');
+  const ui = document.getElementById('ui');
+  const fallback = document.getElementById('fallback');
+
+  async function plain(reason) {
+    canvas.hidden = true;
+    veil.hidden = true;
+    ui.hidden = true;
+    const m = await import('./src/fallback/static.js');
+    await import('./src/styles/site.css');
+    m.showStatic(fallback, { reason });
+  }
+
+  const probe = params.get('static') === '1' ? null : document.createElement('canvas').getContext('webgl2');
+  if (!probe) {
+    plain('');
+  } else {
+    import('./src/main.js')
+      .then((m) => m.boot({ canvas, veil, ui, fallback, params }))
+      .catch((err) => { console.error(err); plain(''); });
+  }
+</script>
+</body>
+</html>

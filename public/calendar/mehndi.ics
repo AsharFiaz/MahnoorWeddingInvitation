@@ -1,0 +1,22 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Mahnoor and Shirza Wedding//Invitation//EN
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+BEGIN:VEVENT
+UID:mehndi-2026@mahnoor-shirza-wedding
+DTSTAMP:20261101T000000Z
+DTSTART:20261226T140000Z
+DTEND:20261226T170000Z
+SUMMARY:Mehndi: Mahnoor Fiaz & Shirza Hashmi
+DESCRIPTION:Mehndi\, Saturday\, 26 December 2026\, 7:00 pm to 10:00 pm (P
+ akistan time).\nDinner: 9:00 pm.\nVenue: Elegance Marquee\, Khanna Pul\,
+  Islamabad.\nGoogle Maps listing: Missile Chowk\, beside KRL Community H
+ all Marquee Zone\, Service Road W\, Islamabad Expressway.\nDirections: h
+ ttps://maps.google.com/?cid=3485907793680232015
+LOCATION:Elegance Marquee\, Khanna Pul\, Islamabad (Missile Chowk\, besid
+ e KRL Community Hall Marquee Zone\, Service Road W\, Islamabad Expresswa
+ y)
+URL:https://maps.google.com/?cid=3485907793680232015
+END:VEVENT
+END:VCALENDAR

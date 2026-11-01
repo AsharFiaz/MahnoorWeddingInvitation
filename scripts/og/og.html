@@ -1,0 +1,63 @@
+<!doctype html>
+<!-- Dev-only generator for public/og-image.jpg (the WhatsApp preview).
+     Open http://127.0.0.1:5173/scripts/og/og.html while `npm run dev` runs;
+     the page draws the 1200x630 card from config/wedding.js and offers it
+     as a download. Not part of the built site. -->
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>OG image generator</title>
+<style>body{margin:24px;font-family:system-ui;background:#eee} canvas{max-width:100%;border:1px solid #ccc;display:block;margin:12px 0}</style>
+</head>
+<body>
+<p><a id="dl" download="og-image.jpg">Download og-image.jpg</a></p>
+<canvas id="c" width="1200" height="630"></canvas>
+<script type="module">
+import '@fontsource/cormorant-garamond/500.css';
+import '@fontsource/inter/400.css';
+import '@fontsource/inter/500.css';
+import '@fontsource/inter/600.css';
+import { WEDDING, coupleNames } from '../../src/config/wedding.js';
+
+await document.fonts.load('500 118px "Cormorant Garamond"');
+await document.fonts.load('600 26px "Inter"');
+await document.fonts.load('500 34px "Inter"');
+await document.fonts.load('400 24px "Inter"');
+
+const W = 1200; const H = 630;
+const c = document.getElementById('c');
+const x = c.getContext('2d');
+const G = '#a8843f'; const GD = '#8a6a2b';
+x.fillStyle = '#f3ebdb'; x.fillRect(0, 0, W, H);
+let s = 12345; const r = () => { s = (s * 16807) % 2147483647; return s / 2147483647; };
+for (let i = 0; i < 9000; i += 1) { x.fillStyle = r() > 0.5 ? 'rgba(120,95,60,0.05)' : 'rgba(255,255,255,0.35)'; x.fillRect(r() * W, r() * H, 2, 2); }
+x.strokeStyle = G; x.lineWidth = 3; x.strokeRect(36, 36, W - 72, H - 72);
+x.lineWidth = 1.2; x.strokeRect(50, 50, W - 100, H - 100);
+function fl(px, py, sx, sy, size) {
+  x.save(); x.translate(px, py); x.scale(sx, sy); x.strokeStyle = G; x.fillStyle = G; x.lineWidth = 2;
+  x.beginPath(); x.moveTo(0, 0); x.bezierCurveTo(size * 0.4, size * 0.05, size * 0.8, size * 0.35, size, size); x.stroke();
+  x.beginPath(); x.moveTo(0, 0); x.bezierCurveTo(size * 0.05, size * 0.4, size * 0.35, size * 0.8, size, size); x.stroke();
+  for (const [lx, ly, a] of [[size * 0.45, size * 0.18, -0.4], [size * 0.18, size * 0.45, 0.4 + Math.PI / 2]]) {
+    x.save(); x.translate(lx, ly); x.rotate(a); x.beginPath(); x.ellipse(0, 0, size * 0.16, size * 0.07, 0, 0, Math.PI * 2); x.fill(); x.restore();
+  }
+  x.beginPath(); x.arc(size * 0.72, size * 0.72, 3, 0, Math.PI * 2); x.fill(); x.restore();
+}
+fl(68, 68, 1, 1, 44); fl(W - 68, 68, -1, 1, 44); fl(68, H - 68, 1, -1, 44); fl(W - 68, H - 68, -1, -1, 44);
+x.textAlign = 'center'; x.textBaseline = 'middle';
+x.fillStyle = GD; x.font = '600 26px Inter'; if ('letterSpacing' in x) x.letterSpacing = '8px';
+x.fillText('WEDDING INVITATION', W / 2, 150);
+if ('letterSpacing' in x) x.letterSpacing = '0px';
+x.font = '500 118px "Cormorant Garamond"'; x.fillText(coupleNames(' & '), W / 2, 268);
+x.strokeStyle = G; x.lineWidth = 1.5; x.beginPath(); x.moveTo(W / 2 - 110, 342); x.lineTo(W / 2 + 110, 342); x.stroke();
+x.fillStyle = G; x.beginPath(); x.arc(W / 2, 342, 4, 0, Math.PI * 2); x.fill();
+x.fillStyle = '#3a2f1f'; x.font = '500 34px Inter';
+const [m, b] = WEDDING.events;
+x.fillText(`${m.name}  ·  ${m.dayLabel}`, W / 2, 412);
+x.fillText(`${b.name}  ·  ${b.dayLabel}`, W / 2, 466);
+x.fillStyle = '#5e5240'; x.font = '400 24px Inter'; x.fillText('Islamabad', W / 2, 530);
+const url = c.toDataURL('image/jpeg', 0.9);
+document.getElementById('dl').href = url;
+window.__og = url;
+</script>
+</body>
+</html>
