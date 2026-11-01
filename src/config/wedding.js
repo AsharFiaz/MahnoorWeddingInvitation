@@ -36,7 +36,7 @@ export const WEDDING = {
 
   closing: [
     'With love and prayers: Mirza Fiaz Ahmed & Alia Fiaz',
-    'Awaiting your presence: Ashar Fiaz, Haseeb Fiaz, Talha Fiaz',
+    'Awaiting your presence: Talha Fiaz, Haseeb Fiaz, Ashar Fiaz',
     'Your presence and prayers mean the world to us',
   ],
 
